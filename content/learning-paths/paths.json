@@ -1,0 +1,26 @@
+[
+  {
+    "id": "technical",
+    "title": "Technical",
+    "description": "Master AL development, extensions, pages, reports, and integration — from your first line of code to production-ready Business Central solutions.",
+    "slug": "technical",
+    "track": "technical",
+    "thumbnail": "/images/learning-paths/technical.svg",
+    "courses": ["al-development-fundamentals"],
+    "duration": 1260,
+    "level": "beginner",
+    "published": true
+  },
+  {
+    "id": "functional",
+    "title": "Functional",
+    "description": "Learn Business Central configuration, finance, sales, purchasing, and manufacturing from a functional consultant perspective.",
+    "slug": "functional",
+    "track": "functional",
+    "thumbnail": "/images/learning-paths/functional.svg",
+    "courses": ["business-central-functional"],
+    "duration": 360,
+    "level": "beginner",
+    "published": true
+  }
+]
