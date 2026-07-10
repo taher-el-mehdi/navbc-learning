@@ -9,7 +9,7 @@ import {
 import { generateCourseJsonLd } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Breadcrumb } from "@/components/layout/breadcrumb";
+import { PageToolbar } from "@/components/layout/page-toolbar";
 import { CourseBanner } from "@/components/courses/course-banner";
 
 interface PageProps {
@@ -57,7 +57,7 @@ export default async function CoursePage({ params }: PageProps) {
       />
 
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
-        <Breadcrumb
+        <PageToolbar
           items={[
             { label: "Courses", href: "/courses" },
             { label: course.title },
@@ -105,12 +105,12 @@ export default async function CoursePage({ params }: PageProps) {
                           <li key={lessonSlug}>
                             <Link
                               href={`/courses/${course.slug}/lessons/${lessonSlug}`}
-                              className="flex items-center justify-between rounded-lg px-3 py-2.5 text-sm transition-colors hover:bg-accent sm:text-base"
+                              className="flex items-start gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors hover:bg-accent sm:px-3 sm:text-base"
                             >
-                              <span className="capitalize">
+                              <span className="min-w-0 flex-1 capitalize">
                                 {i + 1}. {lessonSlug.replace(/-/g, " ")}
                               </span>
-                              <ArrowRight className="h-4 w-4 text-muted-foreground" />
+                              <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground" />
                             </Link>
                           </li>
                         ))}

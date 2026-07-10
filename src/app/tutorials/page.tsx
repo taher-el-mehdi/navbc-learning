@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllLessons, getAllCourses } from "@/lib/content";
-import { formatDuration } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
@@ -16,10 +15,10 @@ export default function TutorialsPage() {
   const courseMap = new Map(courses.map((c) => [c.id, c]));
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
       <div className="max-w-2xl">
-        <h1 className="text-4xl font-bold tracking-tight">Tutorials</h1>
-        <p className="mt-4 text-lg text-muted-foreground">
+        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">Tutorials</h1>
+        <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
           Browse all lessons and tutorials across our courses.
         </p>
       </div>
@@ -42,9 +41,6 @@ export default function TutorialsPage() {
               <CardContent>
                 <p className="line-clamp-2 text-sm text-muted-foreground">
                   {lesson.description}
-                </p>
-                <p className="mt-2 text-xs text-muted-foreground">
-                  {formatDuration(lesson.duration)}
                 </p>
               </CardContent>
             </Card>

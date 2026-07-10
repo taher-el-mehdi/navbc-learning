@@ -81,9 +81,9 @@ function SearchResults() {
 
 export default function SearchPage() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-      <h1 className="text-3xl font-bold tracking-tight">Search</h1>
-      <p className="mt-2 text-muted-foreground">
+    <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+      <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Search</h1>
+      <p className="mt-2 text-base text-muted-foreground sm:text-lg">
         Find courses, lessons, and projects across NAVBC Learning.
       </p>
 

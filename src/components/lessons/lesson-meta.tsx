@@ -1,23 +1,17 @@
-import { Clock, Target } from "lucide-react";
-import { formatDuration } from "@/lib/utils";
+import { Target } from "lucide-react";
 import { difficultyLabels, difficultyColors } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 import type { Difficulty } from "@/types/content";
 
 interface LessonMetaProps {
-  duration: number;
   difficulty: Difficulty;
   objectives: string[];
 }
 
-export function LessonMeta({ duration, difficulty, objectives }: LessonMetaProps) {
+export function LessonMeta({ difficulty, objectives }: LessonMetaProps) {
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-center gap-3">
-        <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
-          <Clock className="h-4 w-4" />
-          {formatDuration(duration)}
-        </span>
         <span
           className={cn(
             "rounded-full border px-2.5 py-0.5 text-xs font-medium",

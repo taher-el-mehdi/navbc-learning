@@ -16,7 +16,7 @@ export function Newsletter() {
 
   if (submitted) {
     return (
-      <div className="flex items-center justify-center gap-2 text-emerald-500">
+      <div className="flex flex-col items-center justify-center gap-2 px-4 text-center text-sm text-emerald-500 sm:flex-row sm:text-base">
         <CheckCircle className="h-5 w-5" />
         <span>Thanks for subscribing! Check your inbox.</span>
       </div>

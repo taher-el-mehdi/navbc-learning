@@ -7,7 +7,7 @@ import {
 } from "@/lib/content";
 import { compileLessonMDX } from "@/lib/mdx";
 import { generateLessonJsonLd } from "@/lib/seo";
-import { Breadcrumb } from "@/components/layout/breadcrumb";
+import { PageToolbar } from "@/components/layout/page-toolbar";
 import { CourseSidebar, LessonNavigation } from "@/components/courses/course-sidebar";
 import { LessonMeta } from "@/components/lessons/lesson-meta";
 import { VideoPlayer } from "@/components/lessons/video-player";
@@ -86,7 +86,7 @@ export default async function LessonPage({ params }: PageProps) {
 
         <article className="min-w-0 flex-1">
           <div className="mx-auto max-w-3xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
-            <Breadcrumb
+            <PageToolbar
               items={[
                 { label: "Courses", href: "/courses" },
                 { label: course.title, href: `/courses/${course.slug}` },
@@ -106,7 +106,6 @@ export default async function LessonPage({ params }: PageProps) {
 
             <div className="mt-8">
               <LessonMeta
-                duration={lesson.duration}
                 difficulty={lesson.difficulty}
                 objectives={lesson.objectives}
               />

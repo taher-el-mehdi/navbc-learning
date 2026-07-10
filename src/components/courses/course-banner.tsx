@@ -3,8 +3,7 @@ import type { Course } from "@/types/content";
 import { difficultyLabels, difficultyColors } from "@/lib/seo";
 import { trackColors, trackLabels } from "@/lib/track-styles";
 import { cn } from "@/lib/utils";
-import { formatDuration } from "@/lib/utils";
-import { BookOpen, Clock, Code2, Briefcase } from "lucide-react";
+import { BookOpen, Code2, Briefcase } from "lucide-react";
 
 interface CourseBannerProps {
   course: Course;
@@ -76,10 +75,6 @@ export function CourseBanner({ course, className }: CourseBannerProps) {
           <span className="flex items-center gap-1.5">
             <BookOpen className="h-4 w-4" />
             {course.lessonsCount} lessons
-          </span>
-          <span className="flex items-center gap-1.5">
-            <Clock className="h-4 w-4" />
-            {formatDuration(course.duration)}
           </span>
         </div>
       </div>

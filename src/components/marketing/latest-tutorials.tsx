@@ -3,7 +3,6 @@ import { ArrowRight } from "lucide-react";
 import { getAllLessons, getAllCourses } from "@/lib/content";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { formatDuration } from "@/lib/utils";
 
 export function LatestTutorials() {
   const lessons = getAllLessons().slice(0, 6);
@@ -11,11 +10,11 @@ export function LatestTutorials() {
   const courseMap = new Map(courses.map((c) => [c.id, c]));
 
   return (
-    <section className="py-20">
+    <section className="py-12 sm:py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-end justify-between gap-4">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 className="text-3xl font-bold tracking-tight">Latest Tutorials</h2>
+            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Latest Tutorials</h2>
             <p className="mt-2 text-muted-foreground">
               Fresh content to keep your skills sharp
             </p>
@@ -28,7 +27,7 @@ export function LatestTutorials() {
           </Button>
         </div>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 lg:grid-cols-3">
           {lessons.map((lesson) => {
             const course = courseMap.get(lesson.courseId);
             if (!course) return null;
@@ -47,13 +46,19 @@ export function LatestTutorials() {
                   <p className="line-clamp-2 text-sm text-muted-foreground">
                     {lesson.description}
                   </p>
-                  <p className="mt-2 text-xs text-muted-foreground">
-                    {formatDuration(lesson.duration)}
-                  </p>
                 </CardContent>
               </Card>
             );
           })}
+        </div>
+
+        <div className="mt-6 flex justify-center sm:hidden">
+          <Button variant="outline" asChild>
+            <Link href="/tutorials">
+              View all tutorials
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

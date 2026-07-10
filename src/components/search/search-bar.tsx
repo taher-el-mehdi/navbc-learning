@@ -122,7 +122,7 @@ export function SearchBar({ className }: { className?: string }) {
               No results for &ldquo;{query}&rdquo;
             </div>
           ) : (
-            <ul className="max-h-80 overflow-y-auto py-2">
+            <ul className="max-h-[min(20rem,50vh)] overflow-y-auto py-2 sm:max-h-80">
               {results.map((result) => {
                 const Icon = typeIcons[result.type];
                 return (

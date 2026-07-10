@@ -16,10 +16,10 @@ export default function LearningPathsPage() {
   const courseMap = new Map(courses.map((c) => [c.id, c]));
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
       <div className="max-w-2xl">
-        <h1 className="text-4xl font-bold tracking-tight">Learning Paths</h1>
-        <p className="mt-4 text-lg text-muted-foreground">
+        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">Learning Paths</h1>
+        <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
           Choose Technical for AL development or Functional for consultant skills.
           Each path includes one complete Fundamentals course.
         </p>
@@ -31,8 +31,8 @@ export default function LearningPathsPage() {
 
       <div className="mt-16 space-y-8">
         {paths.map((path) => (
-          <div key={path.id} id={path.slug} className="rounded-2xl border border-border p-8">
-            <h2 className="text-2xl font-bold">{path.title}</h2>
+          <div key={path.id} id={path.slug} className="rounded-2xl border border-border p-4 sm:p-6 lg:p-8">
+            <h2 className="text-xl font-bold sm:text-2xl">{path.title}</h2>
             <p className="mt-2 text-muted-foreground">{path.description}</p>
             <ol className="mt-6 space-y-3">
               {path.courses.map((courseId, i) => {

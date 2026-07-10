@@ -41,21 +41,21 @@ const features = [
 
 export function WhyLearnSection() {
   return (
-    <section className="py-20">
+    <section className="py-12 sm:py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight">Why Learn with NAVBC</h2>
+          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Why Learn with NAVBC</h2>
           <p className="mt-2 max-w-2xl mx-auto text-muted-foreground">
             Built by BC consultants and developers who ship extensions to
             production every day
           </p>
         </div>
 
-        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 sm:mt-16 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="group rounded-2xl border border-border bg-card/50 p-6 transition-all hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5"
+              className="group rounded-2xl border border-border bg-card/50 p-5 transition-all hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5 sm:p-6"
             >
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10 text-brand transition-colors group-hover:bg-brand group-hover:text-brand-foreground">
                 <feature.icon className="h-5 w-5" />

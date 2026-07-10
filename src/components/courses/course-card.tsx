@@ -1,10 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Clock, BookOpen, ArrowRight, Code2, Briefcase } from "lucide-react";
+import { BookOpen, ArrowRight, Code2, Briefcase } from "lucide-react";
 import type { Course } from "@/types/content";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { formatDuration } from "@/lib/utils";
 import { difficultyLabels, difficultyColors } from "@/lib/seo";
 import { trackColors, trackLabels } from "@/lib/track-styles";
 import { cn } from "@/lib/utils";
@@ -89,10 +88,6 @@ export function CourseCard({ course, featured }: CourseCardProps) {
           <span className="flex items-center gap-1">
             <BookOpen className="h-3.5 w-3.5" />
             {course.lessonsCount} lessons
-          </span>
-          <span className="flex items-center gap-1">
-            <Clock className="h-3.5 w-3.5" />
-            {formatDuration(course.duration)}
           </span>
         </div>
       </CardContent>

@@ -32,16 +32,16 @@ const resources = [
 
 export default function CommunityPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
-      <h1 className="text-4xl font-bold tracking-tight">Community</h1>
-      <p className="mt-4 text-lg text-muted-foreground">
+    <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+      <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">Community</h1>
+      <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
         Connect with Business Central developers and access curated resources.
       </p>
 
       <div className="mt-12 grid gap-4 sm:grid-cols-2">
         <a
           href={siteConfig.links.discord}
-          className="flex items-center gap-4 rounded-xl border border-border p-6 hover:border-brand/40"
+          className="flex items-center gap-4 rounded-xl border border-border p-4 transition-colors hover:border-brand/40 sm:p-6"
         >
           <MessageCircle className="h-8 w-8 text-brand" />
           <div>
@@ -51,7 +51,7 @@ export default function CommunityPage() {
         </a>
         <a
           href={siteConfig.links.github}
-          className="flex items-center gap-4 rounded-xl border border-border p-6 hover:border-brand/40"
+          className="flex items-center gap-4 rounded-xl border border-border p-4 transition-colors hover:border-brand/40 sm:p-6"
         >
           <Github className="h-8 w-8 text-brand" />
           <div>
@@ -69,16 +69,16 @@ export default function CommunityPage() {
               href={r.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between rounded-lg border border-border p-4 hover:border-brand/40"
+              className="flex flex-col gap-3 rounded-lg border border-border p-4 transition-colors hover:border-brand/40 sm:flex-row sm:items-center sm:justify-between sm:p-4"
             >
-              <div className="flex items-center gap-3">
-                <BookOpen className="h-5 w-5 text-muted-foreground" />
-                <div>
+              <div className="flex min-w-0 items-start gap-3 sm:items-center">
+                <BookOpen className="mt-0.5 h-5 w-5 shrink-0 text-muted-foreground sm:mt-0" />
+                <div className="min-w-0">
                   <p className="font-medium">{r.title}</p>
                   <p className="text-sm text-muted-foreground">{r.description}</p>
                 </div>
               </div>
-              <ExternalLink className="h-4 w-4 text-muted-foreground" />
+              <ExternalLink className="h-4 w-4 shrink-0 self-end text-muted-foreground sm:self-center" />
             </a>
           </li>
         ))}

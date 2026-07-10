@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Code2, Github, Twitter } from "lucide-react";
+import { Code2, Github } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { Separator } from "@/components/ui/separator";
 
@@ -7,7 +7,6 @@ const footerLinks = {
   learn: [
     { title: "All Courses", href: "/courses" },
     { title: "Learning Paths", href: "/learning-paths" },
-    { title: "Projects", href: "/projects" },
     { title: "Tutorials", href: "/tutorials" },
     { title: "Contribute", href: "/contribute" },
   ],
@@ -23,20 +22,14 @@ const footerLinks = {
     { title: "Community", href: "/community" },
     { title: "Blog", href: "https://navbc.com/blog" },
   ],
-  company: [
-    { title: "About NAVBC", href: "https://navbc.com" },
-    { title: "Contact", href: "https://navbc.com/contact" },
-    { title: "Privacy", href: "/privacy" },
-    { title: "Terms", href: "/terms" },
-  ],
 };
 
 export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-card/50">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
-          <div className="lg:col-span-2">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+        <div className="grid grid-cols-2 gap-8 sm:gap-10 md:grid-cols-2 lg:grid-cols-5 lg:gap-12">
+          <div className="col-span-2 lg:col-span-2">
             <Link href="/" className="flex items-center gap-2.5">
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-brand-foreground">
                 <Code2 className="h-5 w-5" />
@@ -63,13 +56,6 @@ export function SiteFooter() {
                 aria-label="GitHub"
               >
                 <Github className="h-4 w-4" />
-              </a>
-              <a
-                href={siteConfig.links.twitter}
-                className="rounded-lg border border-border p-2 text-muted-foreground transition-colors hover:border-brand hover:text-brand"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-4 w-4" />
               </a>
             </div>
           </div>

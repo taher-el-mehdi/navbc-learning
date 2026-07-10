@@ -19,7 +19,7 @@ export function DownloadButton({ file }: DownloadButtonProps) {
   const Icon = typeIcons[file.type];
 
   return (
-    <Button variant="outline" size="sm" className="justify-start gap-2" asChild>
+    <Button variant="outline" size="sm" className="w-full justify-start gap-2 sm:w-auto" asChild>
       <a href={file.path} download aria-label={`Download ${file.name}`}>
         <Icon className="h-4 w-4" />
         <span className="truncate">{file.name}</span>
@@ -46,7 +46,7 @@ export function DownloadsPanel({ downloads }: DownloadsPanelProps) {
           Downloads
         </CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-wrap gap-2">
+      <CardContent className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
         {downloads.map((file) => (
           <DownloadButton key={file.path} file={file} />
         ))}

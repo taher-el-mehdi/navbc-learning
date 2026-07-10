@@ -16,7 +16,7 @@ export function Hero({ courseCount = 2, lessonCount = 30 }: HeroProps) {
       <div className="hero-glow absolute inset-0" />
       <div className="grid-pattern absolute inset-0 opacity-50" />
 
-      <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -47,19 +47,19 @@ export function Hero({ courseCount = 2, lessonCount = 30 }: HeroProps) {
             </Button>
           </div>
 
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-muted-foreground">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground sm:gap-8">
             <div>
-              <span className="block text-2xl font-bold text-foreground">{lessonCount}+</span>
+              <span className="block text-xl font-bold text-foreground sm:text-2xl">{lessonCount}+</span>
               Lessons
             </div>
-            <div className="h-8 w-px bg-border" />
+            <div className="h-8 w-px bg-border max-sm:hidden" />
             <div>
-              <span className="block text-2xl font-bold text-foreground">{courseCount}</span>
+              <span className="block text-xl font-bold text-foreground sm:text-2xl">{courseCount}</span>
               Paths
             </div>
-            <div className="h-8 w-px bg-border" />
+            <div className="h-8 w-px bg-border max-sm:hidden" />
             <div>
-              <span className="block text-2xl font-bold text-foreground">Free</span>
+              <span className="block text-xl font-bold text-foreground sm:text-2xl">Free</span>
               To Start
             </div>
           </div>

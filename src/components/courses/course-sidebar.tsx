@@ -92,11 +92,11 @@ export function CourseSidebar({ course, currentLessonSlug }: CourseSidebarProps)
   return (
     <>
       {/* Mobile lesson nav trigger */}
-      <div className="sticky top-16 z-40 flex items-center justify-between border-b border-border bg-background/95 px-4 py-3 backdrop-blur-lg lg:hidden">
+      <div className="sticky top-16 z-40 flex items-center gap-3 border-b border-border bg-background/95 px-4 py-3 backdrop-blur-lg lg:hidden">
         <Button
           variant="outline"
           size="sm"
-          className="gap-2"
+          className="shrink-0 gap-2"
           onClick={() => setMobileOpen(true)}
           aria-label="Open lesson menu"
         >
@@ -105,7 +105,7 @@ export function CourseSidebar({ course, currentLessonSlug }: CourseSidebarProps)
         </Button>
         <Link
           href={`/courses/${course.slug}`}
-          className="truncate text-sm font-medium text-muted-foreground hover:text-brand"
+          className="min-w-0 flex-1 truncate text-sm font-medium text-muted-foreground hover:text-brand"
         >
           {course.title}
         </Link>

@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Code2, Briefcase } from "lucide-react";
 import { getLearningPathBySlug, getAllLearningPaths, getAllCourses } from "@/lib/content";
-import { formatDuration } from "@/lib/utils";
 import { difficultyLabels, difficultyColors } from "@/lib/seo";
 import {
   trackColors,
@@ -12,7 +11,7 @@ import {
   trackGradients,
 } from "@/lib/track-styles";
 import { cn } from "@/lib/utils";
-import { Breadcrumb } from "@/components/layout/breadcrumb";
+import { PageToolbar } from "@/components/layout/page-toolbar";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -44,8 +43,8 @@ export default async function LearningPathPage({ params }: PageProps) {
   const TrackIcon = track === "functional" ? Briefcase : Code2;
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
-      <Breadcrumb
+    <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+      <PageToolbar
         items={[
           { label: "Learning Paths", href: "/learning-paths" },
           { label: path.title },
@@ -105,9 +104,6 @@ export default async function LearningPathPage({ params }: PageProps) {
           </div>
           <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">{path.title}</h1>
           <p className="mt-3 text-lg text-muted-foreground">{path.description}</p>
-          <p className="mt-2 text-sm text-muted-foreground">
-            {formatDuration(path.duration)} total
-          </p>
         </div>
       </div>
 
@@ -119,13 +115,13 @@ export default async function LearningPathPage({ params }: PageProps) {
             <li key={courseId}>
               <Link
                 href={`/courses/${course.slug}`}
-                className="flex items-center gap-4 rounded-xl border border-border p-6 transition-all hover:border-brand/40 hover:shadow-lg"
+                className="flex items-center gap-3 rounded-xl border border-border p-4 transition-all hover:border-brand/40 hover:shadow-lg sm:gap-4 sm:p-6"
               >
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand text-lg font-bold text-brand-foreground">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand text-base font-bold text-brand-foreground sm:h-10 sm:w-10 sm:text-lg">
                   {i + 1}
                 </span>
                 <div>
-                  <p className="text-lg font-semibold">{course.title}</p>
+                  <p className="text-base font-semibold sm:text-lg">{course.title}</p>
                   <p className="text-sm text-muted-foreground">
                     {course.shortDescription}
                   </p>

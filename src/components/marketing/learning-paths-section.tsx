@@ -4,7 +4,6 @@ import { ArrowRight, Code2, Briefcase } from "lucide-react";
 import type { LearningPath, Track } from "@/types/content";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { formatDuration } from "@/lib/utils";
 import { difficultyLabels, difficultyColors } from "@/lib/seo";
 import {
   trackColors,
@@ -25,10 +24,10 @@ const trackIcons = {
 
 export function LearningPathsSection({ paths }: LearningPathsSectionProps) {
   return (
-    <section className="border-y border-border bg-card/30 py-20">
+    <section className="border-y border-border bg-card/30 py-12 sm:py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight">Learning Paths</h2>
+          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Learning Paths</h2>
           <p className="mt-2 text-muted-foreground">
             Two focused paths — choose Technical or Functional
           </p>
@@ -116,10 +115,7 @@ export function LearningPathsSection({ paths }: LearningPathsSectionProps) {
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                     {path.description}
                   </p>
-                  <div className="mt-4 flex items-center justify-between">
-                    <span className="text-xs text-muted-foreground">
-                      {formatDuration(path.duration)}
-                    </span>
+                  <div className="mt-4 flex items-center justify-end">
                     <Button variant="ghost" size="sm" asChild>
                       <Link href={`/learning-paths/${path.slug}`}>
                         Start path

@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Bug, MessageCircle, GitPullRequest, Pencil, Heart } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
@@ -12,27 +10,12 @@ import {
   getNewIssueUrl,
   getLessonIssueBody,
 } from "@/lib/github";
+import { useContributeMeta } from "@/hooks/use-contribute-meta";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-interface ContributeMeta {
-  pageTitle?: string;
-  contentPath?: string;
-  courseTitle?: string;
-}
-
 export function ContributeBar({ className }: { className?: string }) {
-  const pathname = usePathname();
-  const [meta, setMeta] = useState<ContributeMeta>({});
-
-  useEffect(() => {
-    if (!pathname || pathname === "/contribute") return;
-
-    fetch(`/api/contribute-meta?path=${encodeURIComponent(pathname)}`)
-      .then((r) => r.json())
-      .then((data: ContributeMeta) => setMeta(data))
-      .catch(() => setMeta({}));
-  }, [pathname]);
+  const { pathname, meta } = useContributeMeta();
 
   if (pathname === "/contribute") return null;
 
@@ -91,26 +74,26 @@ export function ContributeBar({ className }: { className?: string }) {
 
           <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap lg:justify-end">
             {editUrl && (
-              <Button variant="outline" size="sm" className="gap-2" asChild>
+              <Button variant="outline" size="sm" className="w-full gap-2 sm:w-auto" asChild>
                 <a href={editUrl} target="_blank" rel="noopener noreferrer">
                   <Pencil className="h-4 w-4" />
                   Edit this page
                 </a>
               </Button>
             )}
-            <Button variant="outline" size="sm" className="gap-2" asChild>
+            <Button variant="outline" size="sm" className="w-full gap-2 sm:w-auto" asChild>
               <a href={issueUrl} target="_blank" rel="noopener noreferrer">
                 <Bug className="h-4 w-4" />
                 Report issue
               </a>
             </Button>
-            <Button variant="outline" size="sm" className="gap-2" asChild>
+            <Button variant="outline" size="sm" className="w-full gap-2 sm:w-auto" asChild>
               <a href={getDiscussionsUrl("ideas")} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="h-4 w-4" />
                 Discussion
               </a>
             </Button>
-            <Button variant="brand" size="sm" className="gap-2" asChild>
+            <Button variant="brand" size="sm" className="w-full gap-2 sm:w-auto" asChild>
               <Link href="/contribute">
                 <GitPullRequest className="h-4 w-4" />
                 How to contribute

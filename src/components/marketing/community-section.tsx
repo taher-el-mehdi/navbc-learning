@@ -6,20 +6,20 @@ import { Newsletter } from "@/components/marketing/newsletter";
 
 export function CommunitySection() {
   return (
-    <section className="border-y border-border bg-card/30 py-20">
+    <section className="border-y border-border bg-card/30 py-12 sm:py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight">Join the Community</h2>
+          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Join the Community</h2>
           <p className="mt-2 text-muted-foreground">
             Connect with Business Central developers, share your projects, and get
             help when you&apos;re stuck
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           <a
             href={siteConfig.links.discord}
-            className="flex flex-col items-center rounded-2xl border border-border bg-card p-8 text-center transition-all hover:border-brand/40 hover:shadow-lg"
+            className="flex flex-col items-center rounded-2xl border border-border bg-card p-6 text-center transition-all hover:border-brand/40 hover:shadow-lg sm:p-8"
           >
             <MessageCircle className="h-10 w-10 text-brand" />
             <h3 className="mt-4 font-semibold">Discord</h3>
@@ -29,7 +29,7 @@ export function CommunitySection() {
           </a>
           <a
             href={siteConfig.links.github}
-            className="flex flex-col items-center rounded-2xl border border-border bg-card p-8 text-center transition-all hover:border-brand/40 hover:shadow-lg"
+            className="flex flex-col items-center rounded-2xl border border-border bg-card p-6 text-center transition-all hover:border-brand/40 hover:shadow-lg sm:p-8"
           >
             <Github className="h-10 w-10 text-brand" />
             <h3 className="mt-4 font-semibold">GitHub</h3>
@@ -39,7 +39,7 @@ export function CommunitySection() {
           </a>
           <Link
             href="/community"
-            className="flex flex-col items-center rounded-2xl border border-border bg-card p-8 text-center transition-all hover:border-brand/40 hover:shadow-lg"
+            className="flex flex-col items-center rounded-2xl border border-border bg-card p-6 text-center transition-all hover:border-brand/40 hover:shadow-lg sm:col-span-2 sm:p-8 lg:col-span-1"
           >
             <BookOpen className="h-10 w-10 text-brand" />
             <h3 className="mt-4 font-semibold">Resources</h3>
@@ -55,12 +55,12 @@ export function CommunitySection() {
 
 export function CTASection() {
   return (
-    <section className="py-20">
+    <section className="py-12 sm:py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-3xl border border-brand/20 bg-gradient-to-br from-brand/10 via-card to-card p-12 text-center">
+        <div className="relative overflow-hidden rounded-2xl border border-brand/20 bg-gradient-to-br from-brand/10 via-card to-card p-6 text-center sm:rounded-3xl sm:p-8 md:p-12">
           <div className="hero-glow absolute inset-0" />
           <div className="relative">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
               Ready to become a BC developer?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
@@ -86,7 +86,7 @@ export function CTASection() {
 
 export function NewsletterSection() {
   return (
-    <section className="border-t border-border py-20">
+    <section className="border-t border-border py-12 sm:py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-xl text-center">
           <h2 className="text-2xl font-bold tracking-tight">Stay in the loop</h2>

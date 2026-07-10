@@ -3,9 +3,15 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkGfm from "remark-gfm";
-import { createHighlighter } from "shiki";
+import { createHighlighter, type LanguageRegistration } from "shiki";
 import { mdxComponents } from "@/components/mdx/mdx-components";
 import { codeThemes } from "@/lib/code-theme";
+import alGrammar from "@/lib/grammars/al.json";
+
+const alLanguage = {
+  ...alGrammar,
+  repository: {},
+} as LanguageRegistration;
 
 const prettyCodeOptions = {
   theme: codeThemes,
@@ -16,19 +22,20 @@ const prettyCodeOptions = {
     createHighlighter({
       ...options,
       langs: [
-        "csharp",
+        alLanguage,
         "json",
         "powershell",
-        "xml",
         "sql",
         "javascript",
         "typescript",
         "bash",
         "markdown",
+        "xml",
       ],
       langAlias: {
-        al: "csharp",
         ps1: "powershell",
+        mssql: "sql",
+        tsql: "sql",
       },
     }),
 };
