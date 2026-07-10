@@ -1,103 +1,136 @@
 import Link from "next/link";
-import { MessageCircle, Github, BookOpen } from "lucide-react";
+import { MessageCircle, Github, BookOpen, ArrowRight } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
+import { Section, SectionHeader } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { Newsletter } from "@/components/marketing/newsletter";
 
+const communityLinks = [
+  {
+    icon: MessageCircle,
+    title: "Discord",
+    description: "Chat with BC developers in real-time. Get help, share wins, and network.",
+    href: siteConfig.links.discord,
+    external: true,
+    color: "text-[#5865F2]",
+  },
+  {
+    icon: Github,
+    title: "GitHub",
+    description: "Contribute lessons, report issues, and star the repo to show support.",
+    href: siteConfig.links.github,
+    external: true,
+    color: "text-foreground",
+  },
+  {
+    icon: BookOpen,
+    title: "Resources",
+    description: "Curated links, documentation, and community guides for BC professionals.",
+    href: "/community",
+    external: false,
+    color: "text-brand",
+  },
+];
+
 export function CommunitySection() {
   return (
-    <section className="border-y border-border bg-card/30 py-12 sm:py-16 lg:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Join the Community</h2>
-          <p className="mt-2 text-muted-foreground">
-            Connect with Business Central developers, share your projects, and get
-            help when you&apos;re stuck
-          </p>
-        </div>
+    <Section variant="muted">
+      <SectionHeader
+        label="Community"
+        title="Join the BC Community"
+        description="Connect with developers and consultants worldwide. Learn together, contribute together, grow together."
+      />
 
-        <div className="mt-8 grid gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
-          <a
-            href={siteConfig.links.discord}
-            className="flex flex-col items-center rounded-2xl border border-border bg-card p-6 text-center transition-all hover:border-brand/40 hover:shadow-lg sm:p-8"
-          >
-            <MessageCircle className="h-10 w-10 text-brand" />
-            <h3 className="mt-4 font-semibold">Discord</h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Chat with developers in real-time
-            </p>
-          </a>
-          <a
-            href={siteConfig.links.github}
-            className="flex flex-col items-center rounded-2xl border border-border bg-card p-6 text-center transition-all hover:border-brand/40 hover:shadow-lg sm:p-8"
-          >
-            <Github className="h-10 w-10 text-brand" />
-            <h3 className="mt-4 font-semibold">GitHub</h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Contribute to open-source BC projects
-            </p>
-          </a>
-          <Link
-            href="/community"
-            className="flex flex-col items-center rounded-2xl border border-border bg-card p-6 text-center transition-all hover:border-brand/40 hover:shadow-lg sm:col-span-2 sm:p-8 lg:col-span-1"
-          >
-            <BookOpen className="h-10 w-10 text-brand" />
-            <h3 className="mt-4 font-semibold">Resources</h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Curated links and documentation
-            </p>
-          </Link>
-        </div>
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {communityLinks.map((link) => {
+          const Icon = link.icon;
+          const content = (
+            <>
+              <div
+                className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-brand/10 ${link.color}`}
+              >
+                <Icon className="h-6 w-6" />
+              </div>
+              <h3 className="mt-5 text-lg font-semibold group-hover:text-brand">
+                {link.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {link.description}
+              </p>
+              <span className="mt-4 flex items-center gap-1 text-sm font-medium text-brand opacity-0 transition-opacity group-hover:opacity-100">
+                {link.external ? "Join now" : "Explore"}
+                <ArrowRight className="h-3.5 w-3.5" />
+              </span>
+            </>
+          );
+
+          const className =
+            "group glass-card flex flex-col rounded-2xl p-6 transition-all duration-300 hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5 sm:p-8";
+
+          return link.external ? (
+            <a
+              key={link.title}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={className}
+            >
+              {content}
+            </a>
+          ) : (
+            <Link key={link.title} href={link.href} className={className}>
+              {content}
+            </Link>
+          );
+        })}
       </div>
-    </section>
+    </Section>
   );
 }
 
 export function CTASection() {
   return (
-    <section className="py-12 sm:py-16 lg:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-2xl border border-brand/20 bg-gradient-to-br from-brand/10 via-card to-card p-6 text-center sm:rounded-3xl sm:p-8 md:p-12">
-          <div className="hero-glow absolute inset-0" />
-          <div className="relative">
-            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
-              Ready to become a BC developer?
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-              Pick the Technical or Functional path and start with the free
-              Fundamentals course today.
-            </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button variant="brand" size="lg" asChild>
-                <Link href="/learning-paths">
-                  Choose Your Path
-                </Link>
-              </Button>
-              <Button variant="outline" size="lg" asChild>
-                <Link href="/learning-paths">Browse Learning Paths</Link>
-              </Button>
-            </div>
+    <Section className="pb-20 sm:pb-24">
+      <div className="relative overflow-hidden rounded-3xl border border-brand/20">
+        <div className="hero-glow absolute inset-0" />
+        <div className="hero-glow-secondary absolute inset-0" />
+        <div className="bc-gradient-bg relative px-6 py-12 text-center sm:px-12 sm:py-16 md:py-20">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+            Ready to master{" "}
+            <span className="text-gradient">Business Central</span>?
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-base text-muted-foreground sm:text-lg">
+            Pick your path — Technical or Functional — and start learning today.
+            It&apos;s free, open source, and built for you.
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button variant="brand" size="lg" className="shadow-lg shadow-brand/25" asChild>
+              <Link href="/learning-paths">
+                Start Learning
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
+            <Button variant="outline" size="lg" className="glass" asChild>
+              <Link href="/courses">Explore Courses</Link>
+            </Button>
           </div>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }
 
 export function NewsletterSection() {
   return (
-    <section className="border-t border-border py-12 sm:py-16 lg:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-xl text-center">
-          <h2 className="text-2xl font-bold tracking-tight">Stay in the loop</h2>
-          <p className="mt-2 text-muted-foreground">
-            Get new tutorials, BC release updates, and developer tips in your inbox.
-          </p>
-          <div className="mt-8 flex justify-center">
-            <Newsletter />
-          </div>
-        </div>
+    <Section variant="gradient" className="border-t border-border">
+      <div className="mx-auto max-w-xl text-center">
+        <SectionHeader
+          title="Stay in the Loop"
+          description="Get new tutorials, BC release updates, and developer tips delivered to your inbox."
+          className="mb-8 sm:mb-10"
+        />
+        <Newsletter />
       </div>
-    </section>
+    </Section>
   );
 }

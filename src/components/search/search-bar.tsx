@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { Search, BookOpen, FileText, FolderKanban, Loader2 } from "lucide-react";
+import { Search, BookOpen, FileText, Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import type { SearchDocument } from "@/types/content";
@@ -10,13 +10,11 @@ import type { SearchDocument } from "@/types/content";
 const typeIcons = {
   course: BookOpen,
   lesson: FileText,
-  project: FolderKanban,
 };
 
 const typeLabels = {
   course: "Course",
   lesson: "Lesson",
-  project: "Project",
 };
 
 export function SearchBar({ className }: { className?: string }) {

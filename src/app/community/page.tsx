@@ -18,16 +18,6 @@ const resources = [
     url: "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/developer/methods-auto/library",
     description: "Complete AL method and property reference",
   },
-  {
-    title: "BcContainerHelper",
-    url: "https://github.com/microsoft/navcontainerhelper",
-    description: "PowerShell module for BC Docker containers",
-  },
-  {
-    title: "WALDO's Blog",
-    url: "https://waldo.blog/",
-    description: "Essential BC development tips and tools",
-  },
 ];
 
 export default function CommunityPage() {

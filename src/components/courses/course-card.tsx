@@ -28,7 +28,7 @@ export function CourseCard({ course, featured }: CourseCardProps) {
   return (
     <Card
       className={cn(
-        "group relative overflow-hidden transition-all hover:shadow-lg",
+        "group relative overflow-hidden glass-card transition-all duration-300 hover:shadow-xl",
         trackBorder,
         featured && (course.track === "functional" ? "border-emerald-500/20" : "border-sky-500/20"),
       )}

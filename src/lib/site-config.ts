@@ -26,18 +26,6 @@ export const siteConfig = {
     twitter: "https://twitter.com/navbc",
     discord: "https://discord.gg/RE5mQUzcX",
   },
-  communityMenu: [
-    {
-      title: "Join Discord",
-      href: "https://discord.gg/RE5mQUzcX",
-      description: "Chat with BC developers in real time",
-    },
-    {
-      title: "Star on GitHub",
-      href: githubUrl,
-      description: "Support this open-source learning platform",
-    },
-  ],
   github: {
     repo: "taher-el-mehdi/navbc-learning",
     branch: "main",
@@ -45,8 +33,8 @@ export const siteConfig = {
   },
   nav: [
     { title: "Learning Path", href: "/learning-paths" },
-    { title: "Community", type: "community" as const },
-    { title: "Courses", href: "/courses", hidden: true },
+    { title: "Courses", href: "/courses" },
+    { title: "Community", href: "/community" },
     { title: "Tutorials", href: "/tutorials", hidden: true },
     { title: "Contribute", href: "/contribute", hidden: true },
     { title: "GitHub", href: githubUrl, hidden: true },

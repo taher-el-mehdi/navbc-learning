@@ -265,17 +265,6 @@ export function buildSearchIndex(): SearchDocument[] {
     }
   }
 
-  for (const project of getAllProjects()) {
-    docs.push({
-      id: `project-${project.id}`,
-      type: "project",
-      title: project.title,
-      description: project.description,
-      url: `/projects/${project.slug}`,
-      tags: project.tags,
-    });
-  }
-
   return docs;
 }
 

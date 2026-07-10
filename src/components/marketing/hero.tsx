@@ -2,67 +2,97 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { SearchBar } from "@/components/search/search-bar";
+import { HeroVisual } from "@/components/marketing/hero-visual";
 
-interface HeroProps {
-  courseCount?: number;
-  lessonCount?: number;
-}
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+  },
+};
 
-export function Hero({ courseCount = 2, lessonCount = 30 }: HeroProps) {
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+export function Hero() {
   return (
     <section className="relative overflow-hidden">
       <div className="hero-glow absolute inset-0" />
-      <div className="grid-pattern absolute inset-0 opacity-50" />
+      <div className="hero-glow-secondary absolute inset-0" />
+      <div className="grid-pattern absolute inset-0 opacity-60" />
 
-      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
+      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          {/* Left: Copy */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="text-center lg:text-left"
+          >
+            <motion.h1
+              variants={itemVariants}
+              className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
+            >
+              Learn{" "}
+              <span className="text-gradient-hero">Business Central</span>{" "}
+              Better.
+            </motion.h1>
+
+            <motion.p
+              variants={itemVariants}
+              className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl lg:mx-0"
+            >
+              Learn AL development, functional consulting all in one free,
+              open-source platform.
+            </motion.p>
+
+            <motion.div
+              variants={itemVariants}
+              className="mt-8 flex flex-col items-center gap-4 sm:flex-row lg:justify-start"
+            >
+              <Button variant="brand" size="lg" className="shadow-lg shadow-brand/25" asChild>
+                <Link href="/learning-paths">
+                  Start Learning
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+              <Button variant="outline" size="lg" className="glass" asChild>
+                <Link href="/courses">Explore Courses</Link>
+              </Button>
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="mt-8 max-w-md mx-auto lg:mx-0">
+              <SearchBar />
+            </motion.div>
+          </motion.div>
+
+          {/* Right: 3D Visual */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="relative hidden lg:block"
+          >
+            <HeroVisual />
+          </motion.div>
+        </div>
+
+        {/* Mobile visual */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mx-auto max-w-3xl text-center"
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-12 lg:hidden"
         >
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-            Learn{" "}
-            <span className="text-gradient">
-              Microsoft Dynamics 365 Business Central
-            </span>
-          </h1>
-
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            Two clear learning paths — Technical for AL developers, Functional for
-            consultants. Practical lessons, source code, and real-world guidance.
-          </p>
-
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button variant="brand" size="lg" asChild>
-              <Link href="/learning-paths">
-                Choose Your Path
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
-            <Button variant="outline" size="lg" asChild>
-              <Link href="/courses">Browse Courses</Link>
-            </Button>
-          </div>
-
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground sm:gap-8">
-            <div>
-              <span className="block text-xl font-bold text-foreground sm:text-2xl">{lessonCount}+</span>
-              Lessons
-            </div>
-            <div className="h-8 w-px bg-border max-sm:hidden" />
-            <div>
-              <span className="block text-xl font-bold text-foreground sm:text-2xl">{courseCount}</span>
-              Paths
-            </div>
-            <div className="h-8 w-px bg-border max-sm:hidden" />
-            <div>
-              <span className="block text-xl font-bold text-foreground sm:text-2xl">Free</span>
-              To Start
-            </div>
-          </div>
+          <HeroVisual />
         </motion.div>
       </div>
     </section>

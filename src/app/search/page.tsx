@@ -3,14 +3,13 @@
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { BookOpen, FileText, FolderKanban } from "lucide-react";
+import { BookOpen, FileText } from "lucide-react";
 import type { SearchDocument } from "@/types/content";
 import { SearchBar } from "@/components/search/search-bar";
 
 const typeIcons = {
   course: BookOpen,
   lesson: FileText,
-  project: FolderKanban,
 };
 
 function SearchResults() {
@@ -34,7 +33,7 @@ function SearchResults() {
   if (!query.trim()) {
     return (
       <p className="mt-12 text-center text-muted-foreground">
-        Enter a search term above to find courses, lessons, and projects.
+        Enter a search term above to find courses and lessons.
       </p>
     );
   }
@@ -84,7 +83,7 @@ export default function SearchPage() {
     <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
       <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Search</h1>
       <p className="mt-2 text-base text-muted-foreground sm:text-lg">
-        Find courses, lessons, and projects across NAVBC Learning.
+        Find courses and lessons across NAVBC Learning.
       </p>
 
       <div className="mt-8">

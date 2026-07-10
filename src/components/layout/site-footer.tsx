@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Code2, Github } from "lucide-react";
+import { Code2, Github, MessageCircle } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { Separator } from "@/components/ui/separator";
 
@@ -7,7 +7,6 @@ const footerLinks = {
   learn: [
     { title: "All Courses", href: "/courses" },
     { title: "Learning Paths", href: "/learning-paths" },
-    { title: "Tutorials", href: "/tutorials" },
     { title: "Contribute", href: "/contribute" },
   ],
   openSource: [
@@ -26,36 +25,39 @@ const footerLinks = {
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-card/50">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+    <footer className="relative border-t border-border bg-card/50">
+      <div className="hero-glow absolute inset-0 opacity-50" />
+      <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         <div className="grid grid-cols-2 gap-8 sm:gap-10 md:grid-cols-2 lg:grid-cols-5 lg:gap-12">
           <div className="col-span-2 lg:col-span-2">
             <Link href="/" className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-brand-foreground">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-[var(--bc-azure)] to-[var(--bc-cyan)] text-white shadow-lg shadow-brand/20">
                 <Code2 className="h-5 w-5" />
               </div>
               <span className="font-semibold tracking-tight">NAVBC Learning</span>
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              Open source learning platform for Microsoft Dynamics 365 Business
-              Central developers. Contributions welcome on{" "}
-              <a
-                href={siteConfig.links.github}
-                className="font-medium text-brand hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub
-              </a>
-              .
+              The premium open-source learning platform for Microsoft Dynamics 365
+              Business Central. Free forever, built by the community.
             </p>
             <div className="mt-6 flex gap-3">
               <a
                 href={siteConfig.links.github}
-                className="rounded-lg border border-border p-2 text-muted-foreground transition-colors hover:border-brand hover:text-brand"
+                className="glass flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:border-brand/30 hover:text-brand"
                 aria-label="GitHub"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Github className="h-4 w-4" />
+              </a>
+              <a
+                href={siteConfig.links.discord}
+                className="glass flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:border-brand/30 hover:text-brand"
+                aria-label="Discord"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MessageCircle className="h-4 w-4" />
               </a>
             </div>
           </div>
@@ -68,7 +70,7 @@ export function SiteFooter() {
                   <li key={link.title}>
                     <Link
                       href={link.href}
-                      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                      className="text-sm text-muted-foreground transition-colors hover:text-brand"
                       {...(link.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                     >
                       {link.title}
@@ -93,9 +95,6 @@ export function SiteFooter() {
             >
               MIT License
             </a>
-          </p>
-          <p className="text-sm text-muted-foreground">
-            Built for Business Central developers worldwide.
           </p>
         </div>
       </div>

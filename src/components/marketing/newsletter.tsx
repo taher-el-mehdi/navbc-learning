@@ -24,7 +24,10 @@ export function Newsletter() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex w-full max-w-md flex-col gap-3 sm:flex-row">
+    <form
+      onSubmit={handleSubmit}
+      className="flex w-full max-w-md flex-col gap-3 sm:mx-auto sm:flex-row"
+    >
       <div className="relative flex-1">
         <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
         <Input
@@ -33,11 +36,11 @@ export function Newsletter() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="pl-9"
+          className="glass pl-9"
           aria-label="Email address"
         />
       </div>
-      <Button type="submit" variant="brand">
+      <Button type="submit" variant="brand" className="shadow-lg shadow-brand/20">
         Subscribe
       </Button>
     </form>

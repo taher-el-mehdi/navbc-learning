@@ -5,16 +5,18 @@ import {
 } from "@/lib/content";
 import { generateWebsiteJsonLd, generateOrganizationJsonLd } from "@/lib/seo";
 import { Hero } from "@/components/marketing/hero";
-import { FeaturedCourses } from "@/components/marketing/featured-courses";
+import { StatsSection } from "@/components/marketing/stats-section";
 import { LearningPathsSection } from "@/components/marketing/learning-paths-section";
-import { WhyLearnSection } from "@/components/marketing/why-learn-section";
-import { LatestTutorials } from "@/components/marketing/latest-tutorials";
-import { CommunitySection, CTASection, NewsletterSection } from "@/components/marketing/community-section";
+import { FeaturedCourses } from "@/components/marketing/featured-courses";
+import { CodeShowcase } from "@/components/marketing/code-showcase";
+import { CommunitySection } from "@/components/marketing/community-section";
+import { WhyOpenSourceSection } from "@/components/marketing/why-open-source-section";
 
 export default function HomePage() {
   const featuredCourses = getFeaturedCourses();
   const learningPaths = getAllLearningPaths();
-  const lessonCount = getAllCourses().reduce((sum, c) => sum + c.lessonsCount, 0);
+  const courses = getAllCourses();
+  const lessonCount = courses.reduce((sum, c) => sum + c.lessonsCount, 0);
 
   const websiteJsonLd = generateWebsiteJsonLd();
   const organizationJsonLd = generateOrganizationJsonLd();
@@ -30,14 +32,17 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
       />
 
-      <Hero courseCount={learningPaths.length} lessonCount={lessonCount} />
-      <FeaturedCourses courses={featuredCourses} />
+      <Hero />
+      <StatsSection
+        lessonCount={lessonCount}
+        courseCount={courses.length}
+        pathCount={learningPaths.length}
+      />
       <LearningPathsSection paths={learningPaths} />
-      <WhyLearnSection />
-      <LatestTutorials />
+      <FeaturedCourses courses={featuredCourses} />
+      <CodeShowcase />
       <CommunitySection />
-      <NewsletterSection />
-      <CTASection />
+      <WhyOpenSourceSection />
     </>
   );
 }

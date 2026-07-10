@@ -2,14 +2,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Code2, Briefcase } from "lucide-react";
 import type { LearningPath, Track } from "@/types/content";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { difficultyLabels, difficultyColors } from "@/lib/seo";
+import { Section, SectionHeader } from "@/components/ui/section";
+import { Badge } from "@/components/ui/badge";
+import { difficultyLabels } from "@/lib/seo";
 import {
-  trackColors,
   trackLabels,
   trackCardAccent,
   trackGradients,
+  trackIconBg,
 } from "@/lib/track-styles";
 import { cn } from "@/lib/utils";
 
@@ -24,111 +24,106 @@ const trackIcons = {
 
 export function LearningPathsSection({ paths }: LearningPathsSectionProps) {
   return (
-    <section className="border-y border-border bg-card/30 py-12 sm:py-16 lg:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Learning Paths</h2>
-          <p className="mt-2 text-muted-foreground">
-            Two focused paths — choose Technical or Functional
-          </p>
-        </div>
+    <Section variant="muted">
+      <SectionHeader
+        label="Paths"
+        title="Choose Your Learning Path"
+        description="Two focused tracks designed for your role — master AL development or become a BC functional consultant."
+      />
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {paths.map((path) => {
-            const track = (path.track ?? path.slug) as Track;
-            const TrackIcon =
-              track === "functional" ? trackIcons.functional : trackIcons.technical;
+      <div className="grid gap-6 lg:grid-cols-2">
+        {paths.map((path) => {
+          const track = (path.track ?? path.slug) as Track;
+          const TrackIcon =
+            track === "functional" ? trackIcons.functional : trackIcons.technical;
 
-            return (
-              <Card
-                key={path.id}
-                className={cn(
-                  "group relative overflow-hidden border-border transition-all",
-                  track === "functional"
-                    ? trackCardAccent.functional
-                    : trackCardAccent.technical,
-                )}
-              >
-                <div className="relative aspect-[16/7] overflow-hidden">
-                  {path.thumbnail ? (
-                    <Image
-                      src={path.thumbnail}
-                      alt={path.title}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                  ) : (
-                    <div
-                      className={cn(
-                        "h-full w-full bg-gradient-to-br",
-                        track === "functional"
-                          ? "from-emerald-950 to-slate-900"
-                          : "from-sky-950 to-slate-900",
-                      )}
-                    />
-                  )}
+          return (
+            <Link
+              key={path.id}
+              href={`/learning-paths/${path.slug}`}
+              className={cn(
+                "group glass-card relative overflow-hidden rounded-2xl transition-all duration-300 hover:shadow-xl hover:shadow-brand/5",
+                track === "functional"
+                  ? trackCardAccent.functional
+                  : trackCardAccent.technical,
+              )}
+            >
+              <div className="relative aspect-[16/7] overflow-hidden">
+                {path.thumbnail ? (
+                  <Image
+                    src={path.thumbnail}
+                    alt={path.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                ) : (
                   <div
                     className={cn(
-                      "absolute inset-0 bg-gradient-to-t",
+                      "h-full w-full bg-gradient-to-br",
                       track === "functional"
-                        ? trackGradients.functional
-                        : trackGradients.technical,
+                        ? "from-emerald-950 to-slate-900"
+                        : "from-sky-950 to-slate-900",
                     )}
                   />
-                  <div className="absolute left-5 top-5 flex items-center gap-3">
-                    <div
-                      className={cn(
-                        "flex h-10 w-10 items-center justify-center rounded-lg backdrop-blur-sm",
-                        track === "functional"
-                          ? "bg-emerald-500/20 text-emerald-300"
-                          : "bg-sky-500/20 text-sky-300",
-                      )}
-                    >
-                      <TrackIcon className="h-5 w-5" />
-                    </div>
-                    {track === "technical" || track === "functional" ? (
-                      <span
-                        className={cn(
-                          "rounded-full border px-2.5 py-0.5 text-xs font-medium backdrop-blur-sm",
-                          trackColors[track],
-                        )}
-                      >
-                        {trackLabels[track]}
-                      </span>
-                    ) : null}
-                  </div>
-                  <span
+                )}
+                <div
+                  className={cn(
+                    "absolute inset-0 bg-gradient-to-t",
+                    track === "functional"
+                      ? trackGradients.functional
+                      : trackGradients.technical,
+                  )}
+                />
+                <div className="absolute left-5 top-5 flex items-center gap-3">
+                  <div
                     className={cn(
-                      "absolute right-4 top-4 rounded-full border px-2.5 py-0.5 text-xs font-medium backdrop-blur-sm",
-                      difficultyColors[path.level],
+                      "flex h-10 w-10 items-center justify-center rounded-xl backdrop-blur-sm",
+                      trackIconBg[track],
                     )}
                   >
-                    {difficultyLabels[path.level]}
+                    <TrackIcon className="h-5 w-5" />
+                  </div>
+                  {track === "technical" || track === "functional" ? (
+                    <Badge variant={track === "technical" ? "technical" : "functional"}>
+                      {trackLabels[track]}
+                    </Badge>
+                  ) : null}
+                </div>
+                <Badge
+                  variant="glass"
+                  className="absolute right-4 top-4"
+                >
+                  {difficultyLabels[path.level]}
+                </Badge>
+              </div>
+
+              <div className="p-6">
+                <h3 className="text-xl font-semibold group-hover:text-brand">
+                  {path.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {path.description}
+                </p>
+                <div className="mt-4 flex items-center justify-between">
+                  <span
+                    className={cn(
+                      "text-xs font-medium",
+                      track === "functional" ? "text-emerald-500" : "text-sky-500",
+                    )}
+                  >
+                    {path.courses?.length ?? 0} courses
+                  </span>
+                  <span className="flex items-center gap-1 text-sm font-medium text-brand">
+                    Start path
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </span>
                 </div>
-
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold group-hover:text-brand">
-                    <Link href={`/learning-paths/${path.slug}`}>{path.title}</Link>
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {path.description}
-                  </p>
-                  <div className="mt-4 flex items-center justify-end">
-                    <Button variant="ghost" size="sm" asChild>
-                      <Link href={`/learning-paths/${path.slug}`}>
-                        Start path
-                        <ArrowRight className="h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
+              </div>
+            </Link>
+          );
+        })}
       </div>
-    </section>
+    </Section>
   );
 }

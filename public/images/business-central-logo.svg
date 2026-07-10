@@ -1,0 +1,13 @@
+<svg viewBox="0 0 240 240" class="relative h-32 w-32 drop-shadow-2xl sm:h-40 sm:w-40" role="img" aria-label="Microsoft Dynamics 365 Business Central"><defs><linearGradient id="bc-mint" x1="120" y1="56" x2="56" y2="120" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="
+#B7F6D2"></stop><stop offset="0.45" stop-color="
+#86EAC4"></stop><stop offset="1" stop-color="
+#2BC4CE"></stop></linearGradient><linearGradient id="bc-sea" x1="184" y1="120" x2="120" y2="184" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="
+#55E1A8"></stop><stop offset="0.5" stop-color="
+#1FB0DC"></stop><stop offset="1" stop-color="
+#0A5E9B"></stop></linearGradient><radialGradient id="bc-top" cx="0.42" cy="0.38" r="0.85"><stop offset="0" stop-color="
+#0E7ABC"></stop><stop offset="1" stop-color="
+#0A60A0"></stop></radialGradient><radialGradient id="bc-bottom" cx="0.45" cy="0.4" r="0.85"><stop offset="0" stop-color="
+#0A62A0"></stop><stop offset="1" stop-color="
+#064E80"></stop></radialGradient><linearGradient id="bc-center" x1="120" y1="78" x2="120" y2="162" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="
+#35C2D0"></stop><stop offset="1" stop-color="
+#1B93C6"></stop></linearGradient></defs><rect x="2.75" y="48" width="170.5" height="80" rx="40" fill="url(#bc-mint)" transform="rotate(-45 88 88)"></rect><rect x="66.75" y="112" width="170.5" height="80" rx="40" fill="url(#bc-sea)" transform="rotate(-45 152 152)"></rect><circle cx="120" cy="56" r="40" fill="url(#bc-top)"></circle><circle cx="120" cy="120" r="42" fill="url(#bc-center)"></circle><circle cx="120" cy="184" r="40" fill="url(#bc-bottom)"></circle></svg>

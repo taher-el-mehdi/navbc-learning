@@ -129,7 +129,7 @@ export interface DownloadFile {
 
 export interface SearchDocument {
   id: string;
-  type: "course" | "lesson" | "project";
+  type: "course" | "lesson";
   title: string;
   description: string;
   url: string;
